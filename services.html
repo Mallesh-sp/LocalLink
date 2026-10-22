@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services – LocalLink Local Discovery Platform</title>
+  <meta name="description" content="Browse all available home maintenance and repair services on LocalLink.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>LocalLink</span>
+      </a>
+
+      <nav class="nav-links" id="mobileNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="my-bookings.html" class="nav-link">My Bookings</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="mobile-book-btn">
+          <a href="booking.html" class="btn btn-primary btn-block">Book a Service</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <div id="navAuthGroup" style="display: flex; align-items: center; gap: 0.75rem;"></div>
+        <a href="booking.html" class="btn btn-primary">Book a Service</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1>Find the Service You Need</h1>
+        <p>Explore our full range of home repair, cleaning, and maintenance services provided by verified experts.</p>
+      </div>
+    </section>
+
+    <!-- Services Explorer Section -->
+    <section class="section">
+      <div class="container">
+
+        <a href="index.html" class="back-nav-link">&larr; Back to Home</a>
+
+        <!-- Real-time Filter Search Input -->
+        <div class="search-box-wrap" style="margin-bottom: 2.5rem;">
+          <div class="search-input-group">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="servicesSearchInput" class="search-input" placeholder="Search services (e.g. Plumbing, Cleaning, Painter)..." aria-label="Search services">
+          </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="services-grid" id="allServicesGrid">
+          <!-- Rendered dynamically via js/services.js -->
+        </div>
+
+        <!-- Empty State Container -->
+        <div id="servicesEmptyState" class="empty-state" style="display: none;">
+          <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <h3>No matching services found</h3>
+          <p>We couldn't find any service matching your search term. Try typing another keyword or reset search.</p>
+          <button class="btn btn-secondary" id="btnResetServicesSearch">Show All Services</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>LocalLink</span>
+          </div>
+          <p>LocalLink connects you with background-verified, skilled local service professionals across 10+ essential categories.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="providers.html">Providers</a>
+            <a href="my-bookings.html">My Bookings</a>
+            <a href="about.html">About Us</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Services</h4>
+          <div class="footer-links">
+            <a href="providers.html?service=Electrician">Electrician</a>
+            <a href="providers.html?service=Plumber">Plumber</a>
+            <a href="providers.html?service=Home%20Cleaning">Home Cleaning</a>
+            <a href="providers.html?service=AC%20Repair">AC Repair</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <div class="footer-links">
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 LocalLink. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/services.js"></script>
+</body>
+</html>

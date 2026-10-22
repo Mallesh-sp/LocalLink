@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Professionals – LocalLink</title>
+  <meta name="description" content="Browse and filter local service professionals by rating, price, experience, and availability.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>LocalLink</span>
+      </a>
+
+      <nav class="nav-links" id="mobileNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="providers.html" class="nav-link active">Providers</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="my-bookings.html" class="nav-link">My Bookings</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="mobile-book-btn">
+          <a href="booking.html" class="btn btn-primary btn-block">Book a Service</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <div id="navAuthGroup" style="display: flex; align-items: center; gap: 0.75rem;"></div>
+        <a href="booking.html" class="btn btn-primary">Book a Service</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1>Service Professionals</h1>
+        <p>Compare ratings, pricing, and availability of verified experts in your neighborhood.</p>
+      </div>
+    </section>
+
+    <!-- Main Filterable Directory Layout -->
+    <section class="section">
+      <div class="container">
+        <a href="services.html" class="back-nav-link">&larr; Back to Services</a>
+        <div class="filter-layout">
+
+          <!-- Filter Sidebar Controls -->
+          <aside class="filter-sidebar">
+            <div class="filter-header">
+              <h3>Filter Experts</h3>
+              <button class="filter-reset-btn" id="btnResetFilters">Reset All</button>
+            </div>
+
+            <!-- Search input within directory -->
+            <div class="filter-group">
+              <label for="filterSearch">Search Professional</label>
+              <input type="text" id="filterSearch" class="form-control" placeholder="Name or keyword...">
+            </div>
+
+            <!-- Service Category Filter -->
+            <div class="filter-group">
+              <label for="filterService">Service Category</label>
+              <select id="filterService" class="form-control">
+                <option value="all">All Services</option>
+                <!-- Rendered dynamically -->
+              </select>
+            </div>
+
+            <!-- Rating Filter -->
+            <div class="filter-group">
+              <label for="filterRating">Minimum Rating</label>
+              <select id="filterRating" class="form-control">
+                <option value="0">All Ratings</option>
+                <option value="4.0">4.0+ Stars</option>
+                <option value="4.5">4.5+ Stars</option>
+                <option value="4.8">4.8+ Top Rated</option>
+              </select>
+            </div>
+
+            <!-- Availability Filter -->
+            <div class="filter-group">
+              <label for="filterAvailability">Availability</label>
+              <select id="filterAvailability" class="form-control">
+                <option value="all">All Availability</option>
+                <option value="Available Today">Available Today</option>
+                <option value="Available Tomorrow">Available Tomorrow</option>
+              </select>
+            </div>
+
+            <!-- Price Filter -->
+            <div class="filter-group">
+              <label for="filterPrice">Max Starting Price</label>
+              <select id="filterPrice" class="form-control">
+                <option value="all">Any Price</option>
+                <option value="400">Under ₹400</option>
+                <option value="600">Under ₹600</option>
+                <option value="1000">Under ₹1000</option>
+              </select>
+            </div>
+          </aside>
+
+          <!-- Directory Content Area -->
+          <div class="directory-content">
+            <!-- Sort & Counter Toolbar -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+              <span id="resultsCount" style="font-weight: 600; color: var(--text-muted); font-size: 0.95rem;">
+                Showing 0 professionals
+              </span>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <label for="sortBy" style="font-size: 0.85rem; font-weight: 600; color: var(--text-dark);">Sort By:</label>
+                <select id="sortBy" class="form-control" style="width: auto; padding: 0.4rem 0.75rem;">
+                  <option value="recommended">Recommended</option>
+                  <option value="rating_desc">Highest Rated</option>
+                  <option value="price_asc">Price: Low to High</option>
+                  <option value="experience_desc">Experience: High to Low</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Providers Grid -->
+            <div class="providers-grid" id="providersListGrid">
+              <!-- Dynamically populated by js/providers.js -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="providersEmptyState" class="empty-state" style="display: none;">
+              <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+              <h3>No professionals found</h3>
+              <p>Try changing your filters or selecting another service category.</p>
+              <button class="btn btn-primary" id="btnResetEmptyFilters">Clear Filters</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>LocalLink</span>
+          </div>
+          <p>LocalLink connects you with background-verified, skilled local service professionals.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="providers.html">Providers</a>
+            <a href="my-bookings.html">My Bookings</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Services</h4>
+          <div class="footer-links">
+            <a href="providers.html?service=Electrician">Electrician</a>
+            <a href="providers.html?service=Plumber">Plumber</a>
+            <a href="providers.html?service=AC%20Repair">AC Repair</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <div class="footer-links">
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 LocalLink. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/providers.js"></script>
+</body>
+</html>

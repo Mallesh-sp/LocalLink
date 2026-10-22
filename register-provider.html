@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Service Partner – LocalLink Pro</title>
+  <meta name="description" content="Join LocalLink as a Service Professional. Register your business, offer doorstep services, and grow your local customer base.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>LocalLink Partner</span>
+      </a>
+
+      <nav class="nav-links" id="mobileNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="register-provider.html" class="nav-link active">Join as Partner</a>
+      </nav>
+
+      <div class="header-actions">
+        <div id="navAuthGroup" style="display: flex; align-items: center; gap: 0.75rem;"></div>
+        <a href="login.html" class="btn btn-outline">Partner Login</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+      <div class="container">
+        <h1>Join LocalLink as a Service Partner</h1>
+        <p>Offer your professional doorstep services, get direct customer requests, and expand your service earnings.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="max-width: 640px;">
+        <a href="index.html" class="back-nav-link">&larr; Back to Home</a>
+
+        <div class="form-card">
+          <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-dark); text-align: center;">Service Man Partner Account</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">
+            Register your profile to start receiving local doorstep service jobs in your area.
+          </p>
+
+          <div id="partnerRegAlert" class="badge badge-danger" style="display: none; width: 100%; padding: 0.75rem; justify-content: center; margin-bottom: 1rem; font-size: 0.85rem;"></div>
+
+          <form id="partnerRegForm" novalidate>
+            <!-- Full Name -->
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="pName" class="form-label">Full Name / Business Name <span class="required">*</span></label>
+              <input type="text" id="pName" class="form-control" placeholder="e.g. Vikram Singh / Vikram Electricals">
+              <div class="form-error-msg" id="errPName">Please enter your full name (minimum 2 characters).</div>
+            </div>
+
+            <!-- Service Category -->
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="pCategory" class="form-label">Service Specialization <span class="required">*</span></label>
+              <select id="pCategory" class="form-control">
+                <option value="">Select Service Category</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Plumber">Plumber</option>
+                <option value="AC Repair">AC Repair</option>
+                <option value="Home Cleaning">Home Cleaning</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="Painter">Painter</option>
+                <option value="Appliance Repair">Appliance Repair</option>
+                <option value="Mechanic">Mechanic</option>
+                <option value="Pest Control">Pest Control</option>
+                <option value="Gardening">Gardening</option>
+              </select>
+              <div class="form-error-msg" id="errPCategory">Please select your service specialization.</div>
+            </div>
+
+            <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <!-- Email -->
+              <div class="form-group">
+                <label for="pEmail" class="form-label">Email Address <span class="required">*</span></label>
+                <input type="email" id="pEmail" class="form-control" placeholder="partner@locallink.com">
+                <div class="form-error-msg" id="errPEmail">Please enter a valid email address.</div>
+              </div>
+
+              <!-- Mobile -->
+              <div class="form-group">
+                <label for="pMobile" class="form-label">10-Digit Mobile <span class="required">*</span></label>
+                <input type="tel" id="pMobile" class="form-control" placeholder="9876543210" maxlength="10">
+                <div class="form-error-msg" id="errPMobile">Mobile must be 10 digits starting with 6-9.</div>
+              </div>
+            </div>
+
+            <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <!-- City -->
+              <div class="form-group">
+                <label for="pCity" class="form-label">Operating City <span class="required">*</span></label>
+                <input type="text" id="pCity" class="form-control" placeholder="e.g. Bengaluru">
+                <div class="form-error-msg" id="errPCity">Please enter your operating city.</div>
+              </div>
+
+              <!-- Hourly Rate -->
+              <div class="form-group">
+                <label for="pRate" class="form-label">Base Fee / Rate (₹) <span class="required">*</span></label>
+                <input type="number" id="pRate" class="form-control" placeholder="e.g. 299" min="100">
+                <div class="form-error-msg" id="errPRate">Please enter a valid base rate.</div>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="pPassword" class="form-label">Password <span class="required">*</span></label>
+              <input type="password" id="pPassword" class="form-control" placeholder="Minimum 6 characters">
+              
+              <div class="pwd-strength-wrap" id="pStrengthWrap" style="display: none;">
+                <div class="pwd-strength-bar">
+                  <div class="pwd-strength-fill" id="pStrengthFill"></div>
+                </div>
+                <div class="pwd-strength-text" id="pStrengthText">Strength: Weak</div>
+              </div>
+
+              <div class="form-error-msg" id="errPPassword">Password must be at least 6 characters long.</div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <label for="pConfirmPassword" class="form-label">Confirm Password <span class="required">*</span></label>
+              <input type="password" id="pConfirmPassword" class="form-control" placeholder="Re-enter password">
+              <div class="pwd-match-text" id="pMatchText" style="display: none;"></div>
+              <div class="form-error-msg" id="errPConfirmPassword">Passwords do not match.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              Create Service Partner Account
+            </button>
+          </form>
+
+          <div style="text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); font-size: 0.9rem; color: var(--text-muted);">
+            Looking to book a service? <a href="register.html" style="font-weight: 600;">Register as Customer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 LocalLink. Service Professional Registration.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/register-provider.js"></script>
+</body>
+</html>

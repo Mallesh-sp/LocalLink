@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Service – LocalLink</title>
+  <meta name="description" content="Send a booking request for local electrician, plumber, AC repair, cleaning, or maintenance services.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>LocalLink</span>
+      </a>
+
+      <nav class="nav-links" id="mobileNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="my-bookings.html" class="nav-link">My Bookings</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="mobile-book-btn">
+          <a href="booking.html" class="btn btn-primary btn-block">Book a Service</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <div id="navAuthGroup" style="display: flex; align-items: center; gap: 0.75rem;"></div>
+        <a href="booking.html" class="btn btn-primary">Book a Service</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <h1>Book a Service</h1>
+        <p>Fill in your service requirements and schedule a professional doorstep visit.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="max-width: 800px;">
+
+        <a href="javascript:history.back()" class="back-nav-link">&larr; Back</a>
+
+        <form id="bookingForm" class="form-card" novalidate>
+          
+          <!-- Section 1: Customer Details -->
+          <div style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 1.25rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem;">
+              1. Customer Details
+            </h3>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="customerName" class="form-label">Full Name <span class="required">*</span></label>
+                <input type="text" id="customerName" class="form-control" placeholder="e.g. Rahul Sharma">
+                <div class="form-error-msg" id="errCustomerName">Please enter your full name.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="customerMobile" class="form-label">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="customerMobile" class="form-control" placeholder="10-digit mobile number" maxlength="10">
+                <div class="form-error-msg" id="errCustomerMobile">Please enter a valid 10-digit mobile number.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="customerEmail" class="form-label">Email Address <span class="required">*</span></label>
+                <input type="email" id="customerEmail" class="form-control" placeholder="name@example.com">
+                <div class="form-error-msg" id="errCustomerEmail">Please enter a valid email address.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Service Details -->
+          <div style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 1.25rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem;">
+              2. Service & Professional Selection
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="bookingService" class="form-label">Service Type <span class="required">*</span></label>
+                <select id="bookingService" class="form-control">
+                  <option value="">-- Select Service --</option>
+                  <!-- Populated dynamically -->
+                </select>
+                <div class="form-error-msg" id="errBookingService">Please select a service category.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="bookingProvider" class="form-label">Preferred Professional <span class="required">*</span></label>
+                <select id="bookingProvider" class="form-control">
+                  <option value="">-- Any Available Professional --</option>
+                  <!-- Populated based on selected service -->
+                </select>
+                <div class="form-error-msg" id="errBookingProvider">Please select a professional.</div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="problemDescription" class="form-label">Problem Description <span class="required">*</span></label>
+                <textarea id="problemDescription" class="form-control" rows="3" placeholder="Describe the issue or service requirements in detail..."></textarea>
+                <div class="form-error-msg" id="errProblemDescription">Please describe the problem or service needed.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Address Details -->
+          <div style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 1.25rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem;">
+              3. Service Address
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="houseNo" class="form-label">House / Flat No. <span class="required">*</span></label>
+                <input type="text" id="houseNo" class="form-control" placeholder="e.g. Flat 402, Sunshine Apts">
+                <div class="form-error-msg" id="errHouseNo">Please enter house or flat number.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="streetArea" class="form-label">Street / Area <span class="required">*</span></label>
+                <input type="text" id="streetArea" class="form-control" placeholder="e.g. 12th Main, Indiranagar">
+                <div class="form-error-msg" id="errStreetArea">Please enter street or area name.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="city" class="form-label">City <span class="required">*</span></label>
+                <input type="text" id="city" class="form-control" value="Bengaluru">
+                <div class="form-error-msg" id="errCity">Please enter city name.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="pincode" class="form-label">Pincode <span class="required">*</span></label>
+                <input type="text" id="pincode" class="form-control" placeholder="6-digit pincode" maxlength="6">
+                <div class="form-error-msg" id="errPincode">Please enter a valid 6-digit pincode.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Schedule -->
+          <div style="margin-bottom: 2.5rem;">
+            <h3 style="margin-bottom: 1.25rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem;">
+              4. Preferred Schedule
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="bookingDate" class="form-label">Preferred Date <span class="required">*</span></label>
+                <input type="date" id="bookingDate" class="form-control">
+                <div class="form-error-msg" id="errBookingDate">Please select a valid date (today or future).</div>
+              </div>
+
+              <div class="form-group">
+                <label for="timeSlot" class="form-label">Preferred Time Slot <span class="required">*</span></label>
+                <select id="timeSlot" class="form-control">
+                  <option value="">-- Select Time Slot --</option>
+                  <option value="9:00 AM – 11:00 AM">9:00 AM – 11:00 AM</option>
+                  <option value="11:00 AM – 1:00 PM">11:00 AM – 1:00 PM</option>
+                  <option value="2:00 PM – 4:00 PM">2:00 PM – 4:00 PM</option>
+                  <option value="4:00 PM – 6:00 PM">4:00 PM – 6:00 PM</option>
+                </select>
+                <div class="form-error-msg" id="errTimeSlot">Please select a time slot.</div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnSubmitBooking">
+            Submit Booking Request
+          </button>
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Booking Confirmation Overlay / Modal -->
+  <div class="modal-overlay" id="confirmationModal">
+    <div class="modal-box">
+      <div class="modal-icon-wrap success">
+        <svg style="width: 36px; height: 36px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-dark);">Booking Request Submitted!</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Your booking request has been successfully recorded in LocalLink.
+      </p>
+
+      <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-align: left; font-size: 0.9rem; margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Booking ID:</span>
+          <strong id="confBookingId" style="color: var(--primary-dark);">LL2026xxxx</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Professional:</span>
+          <strong id="confProviderName">-</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Service:</span>
+          <span id="confServiceName" style="font-weight: 600;">-</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Schedule:</span>
+          <span id="confSchedule" style="font-weight: 600;">-</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Status:</span>
+          <span class="badge badge-warning" id="confStatus">Pending</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <a href="my-bookings.html" class="btn btn-primary" id="btnGoToBookings">View My Bookings</a>
+        <a href="index.html" class="btn btn-secondary" id="btnBackHome">Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>LocalLink</span>
+          </div>
+          <p>LocalLink connects you with background-verified, skilled local service professionals.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="providers.html">Providers</a>
+            <a href="my-bookings.html">My Bookings</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Services</h4>
+          <div class="footer-links">
+            <a href="providers.html?service=Electrician">Electrician</a>
+            <a href="providers.html?service=Plumber">Plumber</a>
+            <a href="providers.html?service=AC%20Repair">AC Repair</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <div class="footer-links">
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 LocalLink. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>

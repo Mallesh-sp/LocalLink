@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Professional Portal – LocalLink</title>
+  <meta name="description" content="LocalLink Service Provider dashboard for technicians and service specialists to manage assigned doorstep jobs.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Site Header (Executive Pro Portal Theme) -->
+  <header class="site-header dashboard-header">
+    <div class="container navbar">
+      <a href="provider-portal.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>LocalLink Pro</span>
+      </a>
+
+      <nav class="nav-links" id="mobileNav">
+        <a href="provider-portal.html" class="nav-link active">Pro Portal</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+        <div class="mobile-book-btn">
+          <a href="booking.html" class="btn btn-primary btn-block">Book a Service</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-sm btn-outline" style="color: #94a3b8; border-color: #334155;">&larr; Main Site</a>
+        <div id="navAuthGroup" style="display: flex; align-items: center; gap: 0.75rem;"></div>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <h1>Service Professional Portal</h1>
+        <p>Manage your assigned doorstep service requests, update work statuses, and view customer addresses.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" id="providerPortalContainer">
+        <!-- Rendered dynamically by js/provider-portal.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <p>&copy; 2026 LocalLink. Service Professional Partner Portal.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/provider-portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalLink – Local Services Discovery & Booking Platform</title>
+  <meta name="description" content="Find trusted local professionals for electrician, plumbing, AC repair, cleaning, and maintenance services near you.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo" id="headerLogo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span>LocalLink</span>
+      </a>
+
+      <nav class="nav-links" id="mobileNav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="my-bookings.html" class="nav-link">My Bookings</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="mobile-book-btn">
+          <a href="booking.html" class="btn btn-primary btn-block">Book a Service</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <div id="navAuthGroup" style="display: flex; align-items: center; gap: 0.75rem;"></div>
+        <a href="booking.html" class="btn btn-primary" id="btnBookHeader">Book a Service</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-tag">
+          <span>Trusted Services. Right Around You.</span>
+        </div>
+        <h1 class="hero-title">Reliable Local Services, Just a Click Away</h1>
+        <p class="hero-subtitle">
+          Find trusted professionals for repairs, maintenance, cleaning and other everyday services near you.
+        </p>
+
+        <form class="search-box-wrap" onsubmit="handleGlobalSearch(event)">
+          <div class="search-input-group">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="globalSearchInput" class="search-input" placeholder="What service do you need? (e.g. Electrician, AC Repair)" aria-label="Search service">
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" id="btnHeroSearch">Search</button>
+        </form>
+
+        <div class="quick-pills">
+          <span>Popular:</span>
+          <button class="pill" onclick="filterByPill('Electrician')">Electrician</button>
+          <button class="pill" onclick="filterByPill('Plumber')">Plumber</button>
+          <button class="pill" onclick="filterByPill('Home Cleaning')">Home Cleaning</button>
+          <button class="pill" onclick="filterByPill('AC Repair')">AC Repair</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Explore Services</h2>
+          <p>Choose from our top-rated local home maintenance and repair categories.</p>
+        </div>
+
+        <div class="services-grid" id="homeCategoriesGrid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="services.html" class="btn btn-outline btn-lg" id="btnViewAllServices">View All Services &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How LocalLink Works -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>How LocalLink Works</h2>
+          <p>Book reliable home services in three simple, hassle-free steps.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Find a Service</h3>
+            <p>Search or select the exact service you need from our comprehensive category list.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Choose a Professional</h3>
+            <p>Compare verified local service providers by ratings, real customer reviews, experience and upfront pricing.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Book a Service</h3>
+            <p>Select your convenient date, preferred time slot, and send your booking request instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Professionals -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Professionals</h2>
+          <p>Handpicked, top-rated local experts ready to assist you today.</p>
+        </div>
+
+        <div class="providers-grid" id="featuredProvidersGrid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="providers.html" class="btn btn-secondary btn-lg" id="btnExploreProviders">Browse All Professionals &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose LocalLink -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Choose LocalLink</h2>
+          <p>We take the guesswork out of finding reliable local home service providers.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <h3>Verified Professionals</h3>
+            <p>Every technician and service partner is background checked for quality and safety.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Transparent Pricing</h3>
+            <p>Upfront starting rates with no hidden fees or surprising unexpected charges.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3>Easy Booking</h3>
+            <p>Select your preferred time slot and place a booking request in under 60 seconds.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Customer Reviews</h3>
+            <p>Read authentic feedback and ratings submitted by real customers in your neighborhood.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner">
+          <h2>Need help at home?</h2>
+          <p>Find the right professional and send your booking request today.</p>
+          <a href="services.html" class="btn btn-primary btn-lg" id="btnCtaExplore">Explore Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>LocalLink</span>
+          </div>
+          <p>LocalLink connects you with background-verified, skilled local service professionals across 10+ essential categories with transparent pricing.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="providers.html">Providers</a>
+            <a href="my-bookings.html">My Bookings</a>
+            <a href="about.html">About Us</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Services</h4>
+          <div class="footer-links">
+            <a href="providers.html?service=Electrician">Electrician</a>
+            <a href="providers.html?service=Plumber">Plumber</a>
+            <a href="providers.html?service=Home%20Cleaning">Home Cleaning</a>
+            <a href="providers.html?service=AC%20Repair">AC Repair</a>
+            <a href="providers.html?service=Mechanic">Mechanic</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <div class="footer-links">
+            <a href="contact.html">Contact Us</a>
+            <a href="contact.html#faq">FAQ</a>
+            <a href="about.html">Privacy Policy</a>
+            <a href="about.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 LocalLink. All Rights Reserved. Web Development Academic Project.</p>
+        <p>Trusted Services. Right Around You.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Home Page Dynamic Renderer
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Render Top 8 Categories
+      const categoriesGrid = document.getElementById('homeCategoriesGrid');
+      if (categoriesGrid) {
+        const topCategories = SERVICE_CATEGORIES.slice(0, 8);
+        categoriesGrid.innerHTML = topCategories.map(cat => `
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              ${SVG_ICONS[cat.iconKey] || SVG_ICONS.electrician}
+            </div>
+            <h3>${cat.name}</h3>
+            <p>${cat.shortDesc}</p>
+            <div class="service-meta">
+              <span class="service-price">Starts at <strong>₹${cat.startingPrice}</strong></span>
+              <a href="providers.html?service=${encodeURIComponent(cat.name)}" class="btn btn-sm btn-outline">Find &rarr;</a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 2. Render 4 Featured Providers
+      const providersGrid = document.getElementById('featuredProvidersGrid');
+      if (providersGrid) {
+        const featured = PROVIDERS_DATA.slice(0, 4);
+        providersGrid.innerHTML = featured.map(p => `
+          <div class="provider-card">
+            <div class="provider-header">
+              <img src="${p.avatar}" alt="${p.name}" class="provider-avatar">
+              <div class="provider-info">
+                <h3>${p.name}</h3>
+                <span class="provider-service-tag">${p.service}</span>
+                ${renderStarRatingHtml(p.rating, p.reviewsCount)}
+              </div>
+            </div>
+
+            <div class="provider-body">
+              <div class="info-item">
+                <span class="info-label">Experience</span>
+                <span class="info-value">${p.experience} Years</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Starting Price</span>
+                <span class="info-value">₹${p.price}</span>
+              </div>
+              <div class="info-item" style="grid-column: span 2;">
+                <span class="info-label">Status</span>
+                <span class="badge badge-success">${p.availability}</span>
+              </div>
+            </div>
+
+            <div class="provider-footer">
+              <a href="provider-details.html?id=${p.id}" class="btn btn-secondary btn-sm">View Profile</a>
+              <a href="booking.html?providerId=${p.id}" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>

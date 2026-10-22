@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Reviews – LocalLink</title>
+  <meta name="description" content="Read real customer reviews and submit ratings for completed doorstep service bookings.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>LocalLink</span>
+      </a>
+
+      <nav class="nav-links" id="mobileNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="my-bookings.html" class="nav-link">My Bookings</a>
+        <a href="reviews.html" class="nav-link active">Reviews</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="mobile-book-btn">
+          <a href="booking.html" class="btn btn-primary btn-block">Book a Service</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <div id="navAuthGroup" style="display: flex; align-items: center; gap: 0.75rem;"></div>
+        <a href="booking.html" class="btn btn-primary">Book a Service</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <h1>Customer Reviews & Ratings</h1>
+        <p>Read transparent feedback from real users and share your experience with LocalLink professionals.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="max-width: 900px;">
+
+        <a href="my-bookings.html" class="back-nav-link">&larr; Back to My Bookings</a>
+
+        <!-- Review Submission Card -->
+        <div class="form-card" style="margin-bottom: 3rem;">
+          <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-dark);">Rate Your Experience</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+            Completed a booking? Submit your honest review to help others in the community.
+          </p>
+
+          <form id="reviewForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="reviewBookingId" class="form-label">Booking ID <span class="required">*</span></label>
+                <input type="text" id="reviewBookingId" class="form-control" placeholder="e.g. LL20260001">
+                <div class="form-error-msg" id="errReviewBookingId">Please enter a valid Booking ID.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="reviewCustomerName" class="form-label">Your Name <span class="required">*</span></label>
+                <input type="text" id="reviewCustomerName" class="form-control" placeholder="e.g. Ananya Roy">
+                <div class="form-error-msg" id="errReviewCustomerName">Please enter your name.</div>
+              </div>
+
+              <div class="form-group full-width">
+                <label class="form-label">Select Star Rating <span class="required">*</span></label>
+                <div class="star-picker" id="starPicker">
+                  <span data-value="1">&#9733;</span>
+                  <span data-value="2">&#9733;</span>
+                  <span data-value="3">&#9733;</span>
+                  <span data-value="4">&#9733;</span>
+                  <span data-value="5">&#9733;</span>
+                </div>
+                <div class="form-error-msg" id="errStarRating">Please select a star rating.</div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="reviewText" class="form-label">Review Comment <span class="required">*</span></label>
+                <textarea id="reviewText" class="form-control" rows="3" placeholder="Share details about punctuality, service quality, and overall experience..."></textarea>
+                <div class="form-error-msg" id="errReviewText">Please write a review comment.</div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem;" id="btnSubmitReview">
+              Submit Review
+            </button>
+          </form>
+        </div>
+
+        <!-- Community Reviews List -->
+        <div>
+          <div style="border-bottom: 2px solid var(--primary-light); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
+            <h2 style="font-size: 1.5rem; color: var(--text-dark);">Recent Community Feedback</h2>
+          </div>
+
+          <div class="services-grid" style="grid-template-columns: 1fr; gap: 1.25rem;" id="communityReviewsList">
+            <!-- Rendered dynamically by js/reviews.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>LocalLink</span>
+          </div>
+          <p>LocalLink connects you with background-verified, skilled local service professionals.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="providers.html">Providers</a>
+            <a href="my-bookings.html">My Bookings</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Services</h4>
+          <div class="footer-links">
+            <a href="providers.html?service=Electrician">Electrician</a>
+            <a href="providers.html?service=Plumber">Plumber</a>
+            <a href="providers.html?service=AC%20Repair">AC Repair</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <div class="footer-links">
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 LocalLink. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/reviews.js"></script>
+</body>
+</html>
